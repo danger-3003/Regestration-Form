@@ -14,8 +14,7 @@ firebase.initializeApp(firebaseConfig);
 
 // reference for db
 var registerformdb = firebase.database().ref('new-register');
-
-var form=document.getElementById("form").addEventListener('submit',(e)=>
+document.getElementById("form").addEventListener('submit',(e)=>
 {
     e.preventDefault();
     var fname = getelement('f_name');
@@ -26,7 +25,6 @@ var form=document.getElementById("form").addEventListener('submit',(e)=>
     var pass = getelement("pass");
 
     addvalues(fname,lname,faname,dob,email,pass);
-    
 })
 const getelement = (id) =>
 {
