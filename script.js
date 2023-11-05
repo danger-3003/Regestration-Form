@@ -25,6 +25,14 @@ document.getElementById("form").addEventListener('submit',(e)=>
     var pass = getelement("pass");
 
     addvalues(fname,lname,faname,dob,email,pass);
+    document.getElementById("alert").classList.replace("hidden","block");
+    document.getElementById("beforesubmit").classList.replace("block","hidden");
+    setTimeout(()=>
+    {
+        document.getElementById("beforesubmit").classList.replace("hidden","block");
+        document.getElementById("alert").classList.replace("block","hidden");
+    }, 3000);
+    document.getElementById("form").reset();
 })
 const getelement = (id) =>
 {
