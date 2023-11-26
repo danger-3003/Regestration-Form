@@ -22,7 +22,7 @@ document.getElementById("form").addEventListener('submit',(e)=>
     var email = getelement("email");
     var pass = getelement("pass");
 
-    var registerformdb = firebase.database().ref(fname);
+    var registerformdb = firebase.database().ref(fname+lname);
     
     registerformdb.set({
         fname:fname,
