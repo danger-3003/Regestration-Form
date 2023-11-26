@@ -8,12 +8,10 @@ const firebaseConfig = {
     appId: "1:659966685778:web:2d3448e1aa64136bd6e58b",
     measurementId: "G-J5CPYBY2WR"
   };
-
 // initializeApp
 firebase.initializeApp(firebaseConfig);
 
 // reference for db
-var registerformdb = firebase.database().ref('new-register');
 document.getElementById("form").addEventListener('submit',(e)=>
 {
     e.preventDefault();
@@ -24,24 +22,9 @@ document.getElementById("form").addEventListener('submit',(e)=>
     var email = getelement("email");
     var pass = getelement("pass");
 
-    addvalues(fname,lname,faname,dob,email,pass);
-    document.getElementById("alert").classList.replace("hidden","block");
-    document.getElementById("beforesubmit").classList.replace("block","hidden");
-    setTimeout(()=>
-    {
-        document.getElementById("beforesubmit").classList.replace("hidden","block");
-        document.getElementById("alert").classList.replace("block","hidden");
-    }, 3000);
-    document.getElementById("form").reset();
-})
-const getelement = (id) =>
-{
-    return document.getElementById(id).value;
-}
-const addvalues = (fname, lname, faname, dob, email, pass) =>
-{
-    var updatedform = registerformdb.push();
-    updatedform.set({
+    var registerformdb = firebase.database().ref(fname);
+    
+    registerformdb.set({
         fname:fname,
         lname:lname,
         faname:faname,
@@ -50,4 +33,18 @@ const addvalues = (fname, lname, faname, dob, email, pass) =>
         pass:pass,
     });
 
+    document.getElementById("alert").classList.replace("hidden","block");
+    document.getElementById("beforesubmit").classList.replace("block","hidden");
+    
+    setTimeout(()=>
+    {
+        document.getElementById("beforesubmit").classList.replace("hidden","block");
+        document.getElementById("alert").classList.replace("block","hidden");
+    }, 3000);
+    
+    document.getElementById("form").reset();
+})
+const getelement = (id) =>
+{
+    return document.getElementById(id).value;
 }
